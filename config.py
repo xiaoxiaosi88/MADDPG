@@ -1,3 +1,36 @@
+# MASAC 专用配置
+import numpy as np
+
+# 环境配置
+ANCHORS_POS = np.array([[-300, -300], [300, -300], [-300, 300], [300, 300]], dtype=np.float32)
+SENSORS_POS = np.array([[0, 0], [150, 0], [-150, 0], [0, 150], [0, -150]], dtype=np.float32)
+ESTIMATED_POSITIONS = np.array([[0, 0], [20, 0], [-10, 0], [90, 80], [50, -150]], dtype=np.float32)
+COMMUNICATION_RANGE = 250
+INITIAL_POS_BOUNDS_IVA = np.array([[-300.0, 300.0], [-300.0, 300.0]], dtype=np.float32)
+NOISE_STD = 2.0
+MAX_EPISODE_STEPS = 100  # 增加步数
+DIMENSION = 2
+RENDER_MODE = None
+
+# MASAC 算法配置
+ACTOR_LR = 3e-4          # Actor学习率
+CRITIC_LR = 3e-4         # Critic学习率
+ALPHA_LR = 3e-4          # 熵系数学习率
+HIDDEN_UNITS = [256, 256] # 隐藏层单元数
+GAMMA = 0.99             # 折扣因子
+TAU = 0.005              # 软更新系数
+ALPHA = 0.2              # 初始熵系数
+AUTO_ENTROPY = True      # 自动调整熵系数
+TARGET_ENTROPY = -2      # 目标熵值
+
+# 训练配置
+MEMORY_SIZE = int(1e6)
+BATCH_SIZE = 256
+LEARNING_STARTS = 5000   # 增加预热步数
+POLICY_FREQUENCY = 1     # 策略更新频率
+TARGET_NETWORK_FREQUENCY = 1
+TOTAL_TIMESTEPS = 5000000  # 增加训练步数
+
 # 探索配置
 EXPLORATION_NOISE = 0.1
 MAX_ACTION = 300.0
